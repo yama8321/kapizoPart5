@@ -1,0 +1,340 @@
+@charset "utf-8";
+
+/*
+
+このコードは教科書のwebサイトを、教科書指定のコードを使わずにデザインカンプだけを見ながら設計しています。
+要素の大きさや余白など教科書と異なる点は多いと思いますが、コーディング初学者にとって最も大事なのは、ディテールにこだわることではなく、
+HTMLとCSSを正しく扱って、レイアウトを組めるかどうかだと考えています。
+
+予習・復習・自習をしっかりこなしている方はレイアウトだけでは簡単すぎると思いますので、
+細かい余白やサイズにもこだわってみてください。
+
+*/
+
+body {
+    font-family: 'Catamaran', 'Noto Sans JP', sans-serif;
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/******************************* header ****************************** */
+
+.headerWrap {
+    max-width: 1280px;
+    height: 128px;
+    margin: 0 auto;
+    padding: 0 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.headerWrap h1 {
+    width: clamp(100px, 100%, 300px);
+    /* min , width , maxの一括指定 */
+    /* min-width:100px;
+    width: 100%;
+    max-width: 300px; */
+}
+
+.headerWrap nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+/******************************* TOP Page ****************************** */
+
+.topContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+#topSec01 {
+    width: 35%;
+    /* flex-basis: 35%;   こちらでも良い。こちらで書いた方が有利な時がある */
+    height: auto;
+}
+
+.topSec01_box {
+    width: 100%;
+    height: calc(100vh - 128px);
+    /* 高さをビューポート単位で高さピッタリに合わせて、そこからheaderの高さを引いている */
+    background-image: url(../images/top_bg.jpg);
+    background-size: cover;
+    background-position: center;
+    /* お肉の画像が切れて欲しくないので、これで真ん中基準でcoverするようになります */
+    text-align: center;
+    /* 中に入れているロゴ画像を真ん中寄せ */
+    padding-top: 2rem;
+    /* 中に入れているロゴ画像の上をpaddingで2文字分開けています */
+}
+
+.topSec01_box img {
+    width: clamp(200px, 50%, 300px);
+    /* 真ん中のwidth:50%設定がポイント。これによって200〜300pxの間を伸縮するようになります */
+    height: auto;
+}
+
+#topSec02 {
+    width: 50%;
+    /* flex-basis: 50%; こちらでも良い*/
+    height: auto;
+    /* #topSec01はwidth:35%なので合計85%。残りの15%がmarginになるので、margin:0 autoをこちらにかけると、余白が7.5%ずつ分配されて隙間ができます */
+    margin: 0 auto;
+}
+
+#topSec02 ul {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#topSec02 ul li {
+    width: calc(100% / 2 - 0.5rem);
+    /* #topSec02 ulの指定で、gap:1remを指定しているので、0.5remづつ引いた要素２つの隙間が合計1remになる */
+    height: auto;
+    background-color: #f6f5f5;
+}
+
+#topSec02 ul li a {
+    display: block;
+    /* インライン要素のaタグを箱のように扱っているので、display:blockでブロック要素に変換。*/
+}
+
+#topSec02 ul li:nth-child(1) a {
+    width: 100%;
+    height: 100%;
+    /* TOPへのリンクはSVG画像しか入っていないので、幅と高さを指定して、flexboxを使って中央揃え */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#topSec02 ul li:nth-child(1) a img {
+    width: 70%;
+    height: auto;
+    /* ちょっと小さくしてます。こちらではなく、imgの親要素にpaddingを書いても同様のことができます */
+}
+
+#topSec02 ul li h2 {
+    font-size: 1.25rem;
+    /* ちょっと大きくしている */
+    padding: 1rem;
+    /* 見出しの周りに1文字分のpaddingを作ることで、高さを作っています。この方法はよく使います。 */
+}
+
+
+/******************************* CONCEPT Page ****************************** */
+
+.concept {
+    display: flex;
+    flex-direction: column;
+    max-width: 1240px;
+    padding: 1rem;
+    gap: 2rem;
+    margin: 2rem auto;
+}
+
+.concepthead {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.concepthead h2 {
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+}
+
+.concepthead h2 span,
+.menuheader h2 span {
+    background-image: linear-gradient(135deg, #e6ba5b 0%, #9ac78a 100%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.concepthead h3,
+.menuheader h3 {
+    font-size: 25px;
+    letter-spacing: 1rem;
+}
+
+.conceptbox {
+    display: flex;
+}
+
+.conceptbox img {
+    width: 40%;
+}
+
+.conceptbox_box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    gap: 3rem;
+}
+
+.conceptbox_box h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.concept :nth-child(3) {
+    flex-direction: row-reverse;
+}
+
+.foot {
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: darkgray;
+}
+
+.foot .footimg {
+    width: 10%;
+    /* 目分量 */
+    min-width: 100px;
+    height: auto;
+    transform: translateY(-1rem);
+}
+
+.foot .footimg:nth-child(2) {
+    transform: translateY(-1.6rem);
+}
+
+
+.menuheader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.menuheader h2 {
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+}
+
+.menusec01 ul {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.menusec01 ul li {
+    padding: 3rem;
+}
+
+.menusec01 ul li h3 {
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 1rem;
+
+}
+
+.menusec01 ul li .menuimg {
+    display: flex;
+}
+
+.menusec01 ul li .menuimg p {
+    display: flex;
+}
+
+.accessgarelly {
+    max-width: 1240px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.accessgarelly h2 {
+    font-size: 2rem;
+}
+
+.accessgarelly .map {
+    width: 100%;
+    height: auto;
+}
+
+.accessgarelly .map iframe {
+    width: 100%;
+    height: 20%;
+}
+
+.accessgarelly .gara00 {
+    /* display: flex;
+    flex-direction: column; */
+    gap: 0;
+    width: 100%;
+    height: auto;
+}
+
+.accessgarelly .gara00 .gara01,
+.accessgarelly .gara00 .gara02,
+.accessgarelly .gara00 .gara01 .gara011,
+.accessgarelly .gara00 .gara02 .gara021 {
+    display: flex;
+}
+
+.accessgarelly .gara01 .gara0111,
+.accessgarelly .gara01 .gara011{
+    width: 50%;
+}
+
+.accessgarelly .gara01 .gara011 p,
+.accessgarelly .gara01 .gara011 .gara012
+{
+    height: 100%;
+    width: 50%;
+}
+
+.accessgarelly .gara01 .gara011 .gara012 p{
+    width:100%;
+}
+
+
+.accessgarelly .gara00 .gara01 .gara011 .gara012 {
+    display: flex;
+    flex-direction: column;
+}
+
+.accessgarelly .gara02 .gara0222,
+.accessgarelly .gara02 .gara021
+{
+width: 50%;
+}
+
+.accessgarelly .gara02 .gara021 p{
+width: 50%;
+}
+
+
+.accessgarelly .gara01 p img,
+.accessgarelly .gara02 p img,
+.accessgarelly .gara00 .gara01 .gara011 p img,
+.accessgarelly .gara00 .gara01 .gara011 .gara012 p img {
+    height: 100%;
+    object-fit: cover;
+}

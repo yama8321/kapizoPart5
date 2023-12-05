@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+/* 教科書では920pxの指定があります。タブレット基準で考えるならば834px以上で切り替わると良いので、900px前後でプロジェクトに応じて可変させます */
+@media (width < 920px) {
+
+    /******************************* header ****************************** */
+
+    .headerWrap {
+        height: calc(118.99px + 1rem + 1rem + 1rem);
+        /* ロゴ画像の高さ119px + 1rem + ナビゲーションの高さ1rem + 下の余白1rem */
+        /* 結果、166.99px */
+        gap: 1rem;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    /******************************* TOP Page ****************************** */
+
+    .topContainer {
+        flex-direction: column;
+        /* 子要素の横幅をflex-basisで指定しているなら、display:blockでflexboxを解除するという手もあります。 */
+        gap: 5rem;
+    }
+
+    #topSec01 {
+        width: 100%;
+    }
+
+    .topSec01_box {
+        height: calc(100vh - 166.99px);
+        /* CSS変数を使うと、こちらでわざわざ計算しなくて済むが、まだ授業で使っていないので、冗長な書き方になってます */
+    }
+
+    #topSec02 {
+        width: 100%;
+    }
+
+    #topSec02 ul {
+        gap: 3rem;
+    }
+
+    #topSec02 ul li {
+        width: calc(100% - 4rem);
+    }
+
+    #topSec02 ul li:nth-child(1) {
+        display: none;
+    }
+
+    /*
+    教科書の付属素材データに不備があるのでこれを入れないといけない
+    imgに対して、width100%と指定すると、画像のオリジナルサイズを無視して無理やり100%幅まで引き伸ばすことができます。 
+    教科書P225に解説があります。そして、そこに作者の発言があるんですが・・・このデータの不備と発言が矛盾しているので、イラッとします。
+    */
+    #topSec02 ul li a img {
+        width: 100%;
+    }
+
+    .concept :nth-child(3) {
+        flex-direction: column;
+    }
+
+    .conceptbox {
+        flex-direction: column;
+    }
+
+    .conceptbox img {
+        width: 100%;
+        height: 30vh;
+        object-fit: cover;
+        object-position: center 90%;
+    }
+
+    .conceptbox_box {
+        margin-top: 1rem;
+        gap: 1rem;
+    }
+
+    .menusec01 ul li .menuimg {
+        flex-wrap: wrap;
+    }
+
+    .menusec01 ul li .menuimg p {
+        width: calc(100% / 2 - 0.75rem);
+    }
+
+    .foot {
+        padding: 0;
+    }
+
+    .foot .footimg {
+        width: 160px;
+        transform: translateY(-1.2rem);
+    }
+
+    .foot .footimg:nth-child(2) {
+        width: 160px;
+        transform: translateY(-3.2rem);
+    }
+
+    /* --------------------------------------------- */
+
+    .accessgarelly .gara01 .gara0111,
+    .accessgarelly .gara01 .gara011,
+    .accessgarelly .gara02 .gara0222,
+    .accessgarelly .gara02 .gara021 {
+        width: 100%;
+    }
+
+    .accessgarelly .gara00 .gara01,
+    .accessgarelly .gara00 .gara02 {
+        flex-direction: column;
+    }
+
+    .accessgarelly .gara00 .gara01 .gara011 {
+        display: flex;
+    }
+
+    .accessgarelly .gara00 .gara01 .gara011 .gara012{
+        height: auto;
+    }
+
+    .accessgarelly .gara00 .gara01 .gara011 .gara012 p{
+        height: 50%;
+    }
+
+    .accessgarelly .gara00 .gara02 .gara021 {
+        display: flex;
+    }
+
+
+
+
+    
+}
+
+/* width < 920px */
